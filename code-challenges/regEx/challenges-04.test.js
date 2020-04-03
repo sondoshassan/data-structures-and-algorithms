@@ -48,11 +48,16 @@ const isCapitalized = (str) => {
 const citiesAtoJ = (arr) => {
   // Solution code here...
   let array = [];
-  let str = arr.join(' ');
-  let regEx = /[A-J]\w*/g;
-  array = str.match(regEx);
-  if (array){
-    return array;
+  let finalArray = [];
+  let regEx = /^[A-J]\w*/g;
+  arr.forEach(val =>{
+    array = val.match(regEx);
+    if(array){
+      finalArray.push(array[0]);
+    }
+  })
+  if (finalArray){
+    return finalArray;
   }
   else {
     return [];
@@ -75,7 +80,7 @@ const matchMonth = (input) => {
   // Solution code here...
   input = input.toString();
   let array = [];
-  let regEx = /[Oo](ctober|ct)/g;
+  let regEx = /^[Oo](ctober$|ct$)/g;
   array = input.match(regEx);
   if (array){
     return true;
@@ -83,7 +88,6 @@ const matchMonth = (input) => {
   else {
     return false;
   }
-
 };
 
 // /* ------------------------------------------------------------------------------------------------
@@ -99,7 +103,7 @@ const matchMonth = (input) => {
 const noPunctuation = str => {
   // Solution code here...
   let array = [];
-  let regEx = /[a-z]\w* /gi;
+  let regEx = /\b\w* /gi;
   array = str.match(regEx);
   if (array){
     return array;
